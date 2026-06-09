@@ -71,6 +71,7 @@ export function renderChart(transactions: Transaction[], canvasId: string): void
           callbacks: {
             label: (ctx: import('chart.js').TooltipItem<'bar'>) => {
               const value = ctx.parsed.y;
+              if (value === null || value === undefined) return '';
               return ` ${value.toLocaleString('es-AR', { style: 'currency', currency: 'ARS' })}`;
             },
           },
