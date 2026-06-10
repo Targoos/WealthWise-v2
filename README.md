@@ -1,8 +1,21 @@
-# WealthWise
+# 💰 WealthWise
 
-Aplicación web de finanzas personales que permite registrar ingresos y gastos, visualizar el balance general, el ahorro mensual y la evolución financiera a lo largo del tiempo.
+> Aplicación web de finanzas personales con TypeScript, arquitectura modular y CI/CD automatizado.
 
-![CI](https://github.com/TU_USUARIO/WealthWise-v2/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/Targoos/WealthWise-v2/actions/workflows/ci.yml/badge.svg)](https://github.com/Targoos/WealthWise-v2/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.4-blue?logo=typescript)](https://www.typescriptlang.org/)
+[![Vitest](https://img.shields.io/badge/Tests-Vitest-6E9F18?logo=vitest)](https://vitest.dev/)
+
+Aplicación que permite registrar ingresos y gastos, visualizar el balance general, el ahorro mensual y la evolución financiera a lo largo del tiempo.
+
+## ✨ Highlights para el portafolio
+
+- **100% TypeScript** con modo estricto habilitado — tipado completo sin `any`
+- **23 tests unitarios** cubriendo lógica de negocio y validaciones
+- **CI/CD con GitHub Actions** — lint → test → build en cada push
+- **Arquitectura modular** — separación clara de responsabilidades (storage, finance, ui, validators)
+- **Sin frameworks de UI** — DOM nativo para demostrar fundamentos sólidos
+- **Cobertura de tests** incluida en el pipeline CI
 
 ## Funcionalidades
 
@@ -127,6 +140,26 @@ El DOM se manipula con `createElement` y `appendChild` en lugar de usar un frame
 
 Chart.js se importa de forma modular (`BarElement`, `BarController`, `CategoryScale`, etc.) en lugar de importar el bundle completo. Esto reduce el tamaño del build final incluyendo solo el código necesario para el gráfico de barras.
 
-## CI/CD
+## 🚀 Demo
 
-El pipeline de GitHub Actions corre automáticamente en cada push a `main` o `develop` y en pull requests. Ejecuta tres pasos en orden: lint → test → build. Si alguno falla, los siguientes no se ejecutan.
+🔗 **[Ver demo en vivo](https://targoos.github.io/WealthWise-v2/)** (GitHub Pages)
+
+## 📊 CI/CD Pipeline
+
+```
+┌─────────┐   ┌─────────┐   ┌─────────┐   ┌─────────┐
+│ Install │ → │  Lint   │ → │  Test   │ → │  Build  │
+│  deps   │   │         │   │  23 ✅  │   │         │
+└─────────┘   └─────────┘   └─────────┘   └─────────┘
+```
+
+El pipeline de **GitHub Actions** corre automáticamente en cada push a `main` o `develop`:
+
+| Paso    | Herramienta         | Descripción                                |
+| ------- | ------------------- | ------------------------------------------ |
+| Install | `npm ci`            | Instalación determinística de dependencias |
+| Lint    | `ESLint + Prettier` | Análisis estático y formato                |
+| Test    | `Vitest`            | 23 tests unitarios con cobertura           |
+| Build   | `TypeScript + Vite` | Compilación y bundling                     |
+
+Si cualquier paso falla, el workflow se detiene y el código no se mergea.
