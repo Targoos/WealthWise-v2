@@ -1,7 +1,10 @@
 import type { Transaction } from './types';
 
 export function calcBalance(transactions: Transaction[]): number {
-  return transactions.reduce((acc, t) => (t.type === 'income' ? acc + t.amount : acc - t.amount), 0);
+  return transactions.reduce(
+    (acc, t) => (t.type === 'income' ? acc + t.amount : acc - t.amount),
+    0
+  );
 }
 
 export function getMonthKey(dateString: string): string {
